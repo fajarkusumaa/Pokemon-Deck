@@ -1,0 +1,66 @@
+.card {
+    align-items: center;
+
+    border-radius: 25px;
+    padding: 24px;
+
+    width: 250px;
+
+    background-color: #303556;
+}
+
+.card-body {
+    position: relative;
+    align-content: center;
+}
+
+.sprite {
+    position: relative;
+    margin-bottom: -50px;
+    top: -60px;
+    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2));
+}
+
+.poke-name {
+    font-size: 24px;
+    font-weight: 600;
+    color: white;
+}
+.poke-atr {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 8px;
+    margin-bottom: 16px;
+    /* flex-direction: column; */
+}
+
+.poke-types {
+    display: flex;
+    gap: 4px;
+    /* flex-direction: column; */
+}
+
+.base-stat {
+    display: flex;
+    justify-content: space-around;
+
+    text-transform: capitalize;
+
+    color: white;
+}
+
+.base-stat p {
+    margin: 1em 0;
+}
+
+.stat-left {
+    font-weight: 600;
+    text-align: left;
+}
+.stat-right {
+    font-weight: 600;
+    color: #efb416;
+    text-align: right;
+}

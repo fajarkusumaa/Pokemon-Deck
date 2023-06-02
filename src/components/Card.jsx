@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
+
 import "./Card.css";
+import "./Modal.css";
 
 import grass from "../icons/grass.svg";
 import bug from "../icons/bug.svg";
@@ -129,43 +131,74 @@ const PokeTypeLogo = ({ pokeTypes }) => {
 };
 
 function Card({ id, name, image, pokeType, stats, statsName }) {
-    return (
-        <div className="card">
-            <div className="card-content">
-                <div className="card-body">
-                    <img
-                        className="sprite"
-                        style={{
-                            height: 200
-                        }}
-                        src={image}
-                        alt={name}
-                    />
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
-                    <div className="poke-atr">
-                        <div className="poke-name">{name}</div>
-                        <div className="poke-types">
-                            {pokeType.map((type) => (
-                                <PokeTypeLogo pokeTypes={type} />
-                            ))}
-                        </div>
-                    </div>
+    function handleCardClick() {
+        setIsModalOpen(!isModalOpen);
+    }
 
-                    <div className="base-stat">
-                        <div className="stat-left">
-                            {statsName.map((stats) => (
-                                <p>{stats}</p>
-                            ))}
-                        </div>
-                        <div className="stat-right">
-                            {stats.map((stats) => (
-                                <p>{stats}</p>
-                            ))}
+    function Modal({ id, name, image, pokeType, stats, statsName }) {
+        return (
+            <div className="modal">
+                <div className="modal-content">
+                    <div className="card">
+                        <div className="card-body">
+                            {name}
+                            <img
+                                className="sprite"
+                                style={{
+                                    height: 200
+                                }}
+                                src={image}
+                                alt={name}
+                            />
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        );
+    }
+
+    return (
+        <>
+            <div className="card" onClick={handleCardClick}>
+                <div className="card-content">
+                    <div className="card-body">
+                        <img
+                            className="sprite"
+                            style={{
+                                height: 200
+                            }}
+                            src={image}
+                            alt={name}
+                        />
+
+                        <div className="poke-atr">
+                            <div className="poke-name">{name}</div>
+                            <div className="poke-types">
+                                {pokeType.map((type) => (
+                                    <PokeTypeLogo pokeTypes={type} />
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className="base-stat">
+                            <div className="stat-left">
+                                {statsName.map((stats) => (
+                                    <p>{stats}</p>
+                                ))}
+                            </div>
+                            <div className="stat-right">
+                                {stats.map((stats) => (
+                                    <p>{stats}</p>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {isModalOpen && <Modal name={name} image={image} />}
+            </div>
+        </>
     );
 }
 
